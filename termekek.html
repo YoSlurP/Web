@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Szaftos Falat - Termékek</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/png" href="../images/icon.png">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="Fooldal.html">Főoldal</a>
+      <a href="termekek.html" class="active">Termékek</a>
+      <a href="receptek.html">Receptek</a>
+      <a href="szallitas.html">Szállítás</a>
+      <a href="rolunk.html">Rólunk</a>
+      <a href="kapcsolat.html">Kapcsolat</a>
+      <a href="#" id="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</a>
+    </nav>
+  </header>
+  <main>
+        <h1>Termékeink 🌿</h1>
+        <p>A Szaftos Falat kínálata színes és bőséges — minden víz alatti lény megtalálja, amit szeret. Ahol lehet, fenntartható forrásból dolgozunk, Oszkár személyes válogatásában.</p>
+
+        <div class="search-bar">
+            <input type="search" placeholder="Mit keresel? (pl. 'alga')">
+            <button class="gomb">Keresés</button>
+        </div>
+
+        <section class="termek-kategoria">
+            <h2>Friss Algák (a zátonyról)</h2>
+            <div class="termek-lista">
+                
+                <article class="termek-kartya">
+                    <img src="../images/zoldalga.png" alt="Zöld alga">
+                    <h3>Zöld Arany-Alga</h3>
+                    <p>Ropogós és friss, Oszkár kedvence.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+                <article class="termek-kartya">
+                    <img src="../images/voros.png" alt="Vörös alga">
+                    <h3>Vörös Korall-Alga</h3>
+                    <p>Ritka csemege, enyhén édes ízzel.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+                <article class="termek-kartya">
+                    <img src="../images/buborekos.png" alt="Kék alga">
+                    <h3>Buborékos Kék-Alga</h3>
+                    <p>Tele vitaminnal, a haldiéták alapja.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="termek-kategoria">
+            <h2>Nasik és Csemegék</h2>
+            <div class="termek-lista">
+                
+                <article class="termek-kartya">
+                    <img src="../images/koralrop.png" alt="Korallropogós">
+                    <h3>Korallropogós</h3>
+                    <p>Finom, roppanós nasi halgyerekeknek.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+                <article class="termek-kartya">
+                    <img src="../images/tintahal.png" alt="Tintahal chips">
+                    <h3>Tintahal Chips</h3>
+                    <p>Igazi ínyenceknek, enyhén sós.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+                <article class="termek-kartya">
+                    <img src="../images/halikra.png" alt="Halikra golyók">
+                    <h3>Halikra-golyók</h3>
+                    <p>Pattogós ízbomba! Próbáld ki!</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="termek-kategoria">
+            <h2>Szószok és Krémek</h2>
+            <div class="termek-lista">
+                
+                <article class="termek-kartya">
+                    <img src="../images/kagylokrem.png" alt="Kagylókrém">
+                    <h3>Kagylókrém (pikáns)</h3>
+                    <p>Ízesített kenhető finomság.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+                <article class="termek-kartya">
+                    <img src="../images/szosz.png" alt="Buborékszósz">
+                    <h3>Buborékszósz</h3>
+                    <p>Tengerzöldségekhez kiváló.</p>
+                    <button class="gomb-kosar">Kosárba</button>
+                </article>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Szaftos Falat | Buborékváros, Korallzátony 7.</p>
+    </footer>
+    <script>
+      let cartCount = 0;
+      document.querySelectorAll(".gomb-kosar").forEach(button => {
+          button.addEventListener("click", () => {
+              cartCount++;
+              document.getElementById("cart-count").textContent = cartCount;
+          });
+      });
+      document.getElementById("cart-icon").addEventListener("click", () => {
+          alert("A kosár funkció még fejlesztés alatt áll! 🙂");
+      });
+      document.querySelector(".search-bar button").addEventListener("click", searchProducts);
+      document.querySelector(".search-bar input").addEventListener("input", searchProducts);
+
+      function searchProducts() {
+          const phrase = document.querySelector(".search-bar input").value.toLowerCase();
+          const products = document.querySelectorAll(".termek-kartya");
+          products.forEach(product => {
+              const name = product.querySelector("h3").textContent.toLowerCase();
+              const desc = product.querySelector("p").textContent.toLowerCase();
+              if (name.includes(phrase) || desc.includes(phrase)) {
+                  product.style.display = "block";
+              } else {
+                  product.style.display = "none";
+              }
+          });
+      }
+</script>
+</body>
+</html>
